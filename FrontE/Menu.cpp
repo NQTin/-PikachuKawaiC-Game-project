@@ -26,19 +26,20 @@ void getEvents(int &line, int &col,int &roundSelect, int &Choice)
                 {
                     if (Choice == 1)
                     {
-                        roundSelect++; 
+                        roundSelect = 2; // chọn độ khó
                         Choice = 1;
                     }
-                    else if (Choice = 2)
+                    else if (Choice == 2)
                     {
                         roundSelect = 3; //Credit
                     }
-                    else exit(0);
+                    else if (Choice == 3)     // Quit
+                        exit(0);
                     break;
                 }
                 case Esc:
                 {
-                    exit(0);
+                    exit(0);        //Quit
                     break;
                 }
             }
@@ -70,18 +71,21 @@ void getEvents(int &line, int &col,int &roundSelect, int &Choice)
                         {
                             line = 4;
                             col = 4;
+                            roundSelect = 5;        
                             break;
                         }
                         case (2):
                         {
                             line = 6;
                             col = 6;
+                            roundSelect = 5;
                             break;
                         }
                         case (3):
                         {
                             line = 10;
                             col = 10;
+                            roundSelect = 5;
                             break;
                         }
                     }
@@ -89,11 +93,20 @@ void getEvents(int &line, int &col,int &roundSelect, int &Choice)
                 }
                 case Esc:
                 {
-                    roundSelect--;
+                    roundSelect = 1;
+                    Choice = 1;
                 }
-            break;
             }
         break;
+        }
+        case 3:
+        {
+            if (button == Esc)
+            {
+                roundSelect = 1;
+                Choice = 1;
+            }
+            break;
         }
     }
 }
@@ -107,23 +120,25 @@ void generateMenu (int &line, int &col, int &roundSelect, int &Choice)
     cout << "_|_|_|    _|  _|_|      _|    _|  _|        _|    _|  _|     _| "<< endl;
     cout << "_|        _|  _|  _|    _|    _|  _|        _|    _|  _|     _| "<< endl;
     cout << "_|        _|  _|    _|    _|_|_|    _|_|_|  _|    _|    _|_|_|  \n\n";
-    cout << "\t Press any button to continue!!";
-
-    if (kbhit())
+    cout << "\t Press Space to continue!!" << endl;
+    char button = getch();
+    if (button = Space)
         clearScreen();
 
+    Sleep(500);
     while (true)
-    {   
-        clearScreen();
+    {  
+        if (roundSelect == 5)
+            break;
         printMenu(roundSelect, Choice);
         getEvents(line, col, roundSelect, Choice);
-       
+        clearScreen();
     }
 }
 
 void printMenu(int roundSelect, int Choice)
 {
-    cout << "Pikachu";
+    cout << "\t\t Pikachu" << endl;
     switch (roundSelect)
     {
         case 1:
@@ -184,6 +199,7 @@ void printMenu(int roundSelect, int Choice)
         case 3:
         {
             cout << "credit";
+            break;
         }
     }
 

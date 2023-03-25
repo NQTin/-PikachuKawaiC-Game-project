@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <conio.h>
+#include "ClearScreen.cpp"
 using namespace std;
 
 //Mã ASCII các phím điều khiển từ bàn phím
