@@ -11,8 +11,7 @@ using namespace std;
 #define Space 32
 #define Esc 27
 
-void getEvents(int &line, int &col, int &Choice, int &roundSelect);
+void getEvents(int &line, int &col, int &roundSelect, int &Choice);
 void printMenu(int roundSelect, int Choice);
-void clearScreen();
-void generateMeny (int &line, int &col, int &roundSelect, int &Choise);
+void generateMenu(int &line, int &col, int &roundSelect, int &Choice);
 

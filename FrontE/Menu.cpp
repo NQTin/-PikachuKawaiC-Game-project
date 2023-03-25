@@ -109,21 +109,21 @@ void generateMenu (int &line, int &col, int &roundSelect, int &Choice)
     cout << "_|        _|  _|    _|    _|_|_|    _|_|_|  _|    _|    _|_|_|  \n\n";
     cout << "\t Press any button to continue!!";
 
-    Sleep(100);
-    system("cls");
-    cout << "\t\t Pikachu" << endl; 
-    printMenu(roundSelect, Choice);
+    if (kbhit())
+        clearScreen();
+
     while (true)
-    {
-        getEvents(line, col, roundSelect, Choice);
-        system("cls");
+    {   
+        clearScreen();
         printMenu(roundSelect, Choice);
+        getEvents(line, col, roundSelect, Choice);
+       
     }
 }
 
 void printMenu(int roundSelect, int Choice)
 {
-    
+    cout << "Pikachu";
     switch (roundSelect)
     {
         case 1:
